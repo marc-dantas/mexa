@@ -32,22 +32,27 @@ class Number:
 
 class Variable:
 
-    def __init__(self, value: str) -> None:
+    def __init__(self, name: str, value: Union[int, float] = None) -> None:
+        self.__name = name
         self.__value = value
 
     @property
-    def value(self) -> str:
+    def value(self) -> Union[int, float]:
         return self.__value
 
+    @property
+    def name(self) -> str:
+        return self.__name
+
     @value.setter
-    def value(self, x: str) -> None:
+    def value(self, x: Union[int, float]) -> None:
         self.__value = x
 
     def __repr__(self) -> str:
-        return f'mexa.expr.Variable({self.value!r})'
+        return f'mexa.expr.Variable({self.name!r})'
 
     def __str__(self) -> str:
-        return self.value
+        return self.name
 
 
 class Operation:
@@ -72,7 +77,6 @@ class Operation:
     @property
     def second(self) -> OperationArgument:
         return self.__second
-
 
     def __process_literal(self) -> str:
         if formatted := self.__format():

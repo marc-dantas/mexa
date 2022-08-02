@@ -6,8 +6,8 @@ def num(value: Union[int, float]) -> Number:
     return Number(value)
 
 
-def var(value: str) -> Variable:
-    return Variable(value)
+def var(name: str, value: Union[int, float] = None) -> Variable:
+    return Variable(name, value)
 
 
 def op(op_type: str,

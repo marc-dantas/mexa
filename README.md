@@ -32,8 +32,10 @@ class Number:
 
 class Variable:
     # Name of the variable (e.g. 'x', 'y', 'a', ...)
-    value: str
-    def __init__(self, value: str) -> None: ...;
+    name: str
+    # Value of the variable
+    value: Union[int, float] = None
+    def __init__(self, ...) -> None: ...;
     def __repr__(self) -> str: ...;
     # Call this function to get the formatted string
     def __str__(self) -> str: ...;
