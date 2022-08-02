@@ -21,12 +21,12 @@ class Number:
     def __str__(self) -> str: ...;
 
 class OperationType(Enum):
-    SUM = auto()
-    SUBTRACT = auto()
-    MULTIPLY = auto()
-    DIVIDE = auto()
-    POWER = auto()
-    ROOT = auto()
+    SUM = '+'
+    SUBTRACT = '-'
+    MULTIPLY = '×'
+    DIVIDE = '÷'
+    POWER = '^'
+    ROOT = '√'
 
 class Operation:
     op_type: OperationType
