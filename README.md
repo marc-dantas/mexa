@@ -2,6 +2,7 @@
 Math EXpression Abstraction
 
 > WARNING! MExA is in development, it may have bugs and malfunctions 
+> Python version: 3.8+
 
 ## What is MExA?
 MExA is a Python package made
@@ -11,44 +12,53 @@ between its members and even simple
 evaluation.
 
 ## Getting Started
-### Usage (Not working yet!)
+### Usage
 #### Module `expr.py`
 ```py
+# Symbol constants
+SUM = '+'
+SUBTRACT = '-'
+MULTIPLY = '×'
+DIVIDE = '÷'
+POWER = '^'
+ROOT = '√'
+
 class Number:
     value: int
     def __init__(self, value: int) -> None: ...;
     def __repr__(self) -> int: ...;
+    # Call this function to get the formatted string
     def __str__(self) -> str: ...;
 
-class OperationType(Enum):
-    SUM = '+'
-    SUBTRACT = '-'
-    MULTIPLY = '×'
-    DIVIDE = '÷'
-    POWER = '^'
-    ROOT = '√'
-
-class Operation:
-    op_type: OperationType
-    first: Union[Number, Variable, Operation]
-    second: Union[Number, Variable, Operation]
-    def __init__(self, ...) -> None: ...;
-    def process_literal(self) -> str: ...;
-    def __repr__(self) -> tuple: ...;
-    def __str__(self) -> str: ...;
-    
 class Variable:
+    # Name of the variable (e.g. 'x', 'y', 'a', ...)
     value: str
     def __init__(self, value: str) -> None: ...;
     def __repr__(self) -> str: ...;
+    # Call this function to get the formatted string
+    def __str__(self) -> str: ...;
+
+
+
+
+class Operation:
+    # The operation symbol
+    op_type: str
+    # First value
+    first: Union[Number, Variable, Operation]
+    # Second value
+    second: Union[Number, Variable, Operation]
+    def __init__(self, ...) -> None: ...;
+    def __repr__(self) -> tuple: ...;
+    # Call this function to get the formatted string
     def __str__(self) -> str: ...;
 
 class Equation:
     first: Operation
     second: Operation
     def __init__(self, ...) -> None: ...;
-    def process_literal(self) -> str: ...;
     def __repr__(self) -> str: ...;
+    # Call this function to get the formatted string
     def __str__(self) -> str: ...;
 ```
 #### Module `util.py`
@@ -57,12 +67,7 @@ def equ(...) -> Equation;
 def num(...) -> Number;
 def var(...) -> Variable;
 def op(...) -> Operation;
-SUM = OperationType.SUM
-SUB = OperationType.SUBTRACT
-MUL = OperationType.MULTIPLY
-DIV = OperationType.DIVIDE
-POW = OperationType.POWER
-ROOT = OperationType.ROOT
 ```
+> Tip: Import the module `examples.py` and see some examples.
 
 > By marc-dantas
