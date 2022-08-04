@@ -15,15 +15,23 @@ evaluation.
 ### Usage
 #### Module `expr.py`
 ```py
-# Symbol constants
+# <Operation> operator constants
 SUM = '+'
 SUBTRACT = '-'
 MULTIPLY = '×'
 DIVIDE = '÷'
 POWER = '^'
 ROOT = '√'
+# <Inequality> operator constants
+NOT_EQ = '≠'
+GREATER_THAN = '>'
+LESS_THAN = '<'
+GREATER_EQ = '≥'
+LESS_EQ = '≤'
+ALMOST_EQ = '≈'
 
 class Number:
+    # The number itself
     value: int
     def __init__(self, value: int) -> None: ...;
     def __repr__(self) -> int: ...;
@@ -40,9 +48,6 @@ class Variable:
     # Call this function to get the formatted string
     def __str__(self) -> str: ...;
 
-
-
-
 class Operation:
     # The operation symbol
     op_type: str
@@ -56,8 +61,22 @@ class Operation:
     def __str__(self) -> str: ...;
 
 class Equation:
-    first: Operation
-    second: Operation
+    # First operation/variable/number
+    first: Union[Number, Variable, Operation]
+    # Second operation/variable/number
+    second: Union[Number, Variable, Operation]
+    def __init__(self, ...) -> None: ...;
+    def __repr__(self) -> str: ...;
+    # Call this function to get the formatted string
+    def __str__(self) -> str: ...;
+
+class Inequality:
+    # The inequality operator
+    ine_type: str
+    # First operation/variable/number
+    first: Union[Number, Variable, Operation]
+    # Second operation/variable/number
+    second: Union[Number, Variable, Operation]
     def __init__(self, ...) -> None: ...;
     def __repr__(self) -> str: ...;
     # Call this function to get the formatted string
@@ -65,10 +84,20 @@ class Equation:
 ```
 #### Module `util.py`
 ```py
-def equ(...) -> Equation;
-def num(...) -> Number;
-def var(...) -> Variable;
-def op(...) -> Operation;
+# Class shortcuts
+def eq(...)      -> Equation;
+def ine(...)     -> Inequality;
+def n(...)       -> Number;
+def v(...)       -> Variable;
+def op(...)      -> Operation;
+# Operation shortcuts
+def add(...)     -> Operation;
+def sub(...)     -> Operation;
+def mul(...)     -> Operation;
+def div(...)     -> Operation;
+def pow(...)     -> Operation;
+def squared(...) -> Operation;
+def sqrt(...)    -> Operation;
 ```
 > Tip: Import the module `examples.py` and see some examples.
 
