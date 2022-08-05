@@ -10,6 +10,10 @@ def v(name: str) -> Variable:
     return Variable(name)
 
 
+def f(name: str, *args: OperationArgument) -> Function:
+    return Function(name, *args)
+
+
 def op(op_type: str,
        first: OperationArgument,
        second: OperationArgument) -> Operation:

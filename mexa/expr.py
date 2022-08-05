@@ -1,7 +1,7 @@
 # MExA expression file
 from typing import Union
 
-OperationArgument = Union['Number', 'Variable', 'Operation']
+OperationArgument = Union['Number', 'Variable', 'Operation', 'Function']
 SUM = '+'
 SUBTRACT = '-'
 MULTIPLY = '∙'
@@ -52,6 +52,31 @@ class Variable:
 
     def __str__(self) -> str:
         return self.name
+
+
+class Function:
+
+    def __init__(self, name: str, *args: OperationArgument) -> None:
+        self.__name = name
+        self.__args = list(args)
+
+    @property
+    def name(self) -> str:
+        return self.__name
+
+    @name.setter
+    def name(self, x: str) -> None:
+        self.__name = x
+
+    @property
+    def args(self) -> list:
+        return self.__args
+
+    def __repr__(self) -> str:
+        return f'mexa.expr.Function({self.name!r}, {", ".join(self.args)})'
+
+    def __str__(self) -> str:
+        return f'{str(self.name)}({", ".join(str(x) for x in self.args)})'
 
 
 class Operation:

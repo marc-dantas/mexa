@@ -46,13 +46,23 @@ class Variable:
     # Call this function to get the formatted string
     def __str__(self) -> str: ...;
 
+class Function:
+    # Name of the function
+    name: str
+    # Arguments of the function
+    *args: Union[Number, Variable, Operation, Function]
+    def __init__(self, ...) -> None;
+    def __repr__(self) -> str: ...;
+    # Call this function to get the formatted string
+    def __str__(self) -> str: ...;
+    
 class Operation:
     # The operation symbol
     op_type: str
     # First value
-    first: Union[Number, Variable, Operation]
+    first: Union[Number, Variable, Operation, Function]
     # Second value
-    second: Union[Number, Variable, Operation]
+    second: Union[Number, Variable, Operation, Function]
     def __init__(self, ...) -> None: ...;
     def __repr__(self) -> tuple: ...;
     # Call this function to get the formatted string
@@ -60,9 +70,9 @@ class Operation:
 
 class Equation:
     # First operation/variable/number
-    first: Union[Number, Variable, Operation]
+    first: Union[Number, Variable, Operation, Function]
     # Second operation/variable/number
-    second: Union[Number, Variable, Operation]
+    second: Union[Number, Variable, Operation, Function]
     def __init__(self, ...) -> None: ...;
     def __repr__(self) -> str: ...;
     # Call this function to get the formatted string
@@ -72,9 +82,9 @@ class Inequality:
     # The inequality operator
     ine_type: str
     # First operation/variable/number
-    first: Union[Number, Variable, Operation]
+    first: Union[Number, Variable, Operation, Function]
     # Second operation/variable/number
-    second: Union[Number, Variable, Operation]
+    second: Union[Number, Variable, Operation, Function]
     def __init__(self, ...) -> None: ...;
     def __repr__(self) -> str: ...;
     # Call this function to get the formatted string
@@ -87,6 +97,7 @@ def eq(...)      -> Equation;
 def ine(...)     -> Inequality;
 def n(...)       -> Number;
 def v(...)       -> Variable;
+def f(...)       -> Function;
 def op(...)      -> Operation;
 # <Operation> shortcuts
 def add(...)     -> Operation;
