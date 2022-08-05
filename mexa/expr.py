@@ -15,6 +15,7 @@ GREATER_EQ = '≥'
 LESS_EQ = '≤'
 ALMOST_EQ = '≈'
 
+
 class Number:
 
     def __init__(self, value: Union[int, float]) -> None:
@@ -37,23 +38,14 @@ class Number:
 
 class Variable:
 
-    def __init__(self, name: str, value: Union[int, float] = None) -> None:
+    def __init__(self, name: str) -> None:
         if len(name) > 1:
             raise NameError('A variable name can be only one character.')
         self.__name = name
-        self.__value = value
-
-    @property
-    def value(self) -> Union[int, float]:
-        return self.__value
 
     @property
     def name(self) -> str:
         return self.__name
-
-    @value.setter
-    def value(self, x: Union[int, float]) -> None:
-        self.__value = x
 
     def __repr__(self) -> str:
         return f'mexa.expr.Variable({self.name!r})'
@@ -117,6 +109,7 @@ class Operation:
 
 
 class Equation:
+
     def __init__(self, first: OperationArgument, second: OperationArgument) -> None:
         self.__first = first
         self.__second = second

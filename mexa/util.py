@@ -6,15 +6,14 @@ def n(value: Union[int, float]) -> Number:
     return Number(value)
 
 
-def v(name: str, value: Union[int, float] = None) -> Variable:
-    return Variable(name, value)
+def v(name: str) -> Variable:
+    return Variable(name)
 
 
 def op(op_type: str,
        first: OperationArgument,
-       second: OperationArgument,
-       *, highlight: bool = False) -> Operation:
-    return Operation(op_type, first, second, highlight=highlight)
+       second: OperationArgument) -> Operation:
+    return Operation(op_type, first, second)
 
 
 def eq(first: OperationArgument, second: OperationArgument) -> Equation:
@@ -51,3 +50,27 @@ def pow(x: OperationArgument, y: OperationArgument) -> Operation:
 
 def sqrt(x: OperationArgument) -> Operation:
     return Operation(ROOT, n(2), x)
+
+
+def ine_ne(x: OperationArgument, y: OperationArgument) -> Inequality:
+    return Inequality(NOT_EQ, x, y)
+
+
+def ine_gt(x: OperationArgument, y: OperationArgument) -> Inequality:
+    return Inequality(GREATER_THAN, x, y)
+
+
+def ine_lt(x: OperationArgument, y: OperationArgument) -> Inequality:
+    return Inequality(LESS_THAN, x, y)
+
+
+def ine_ge(x: OperationArgument, y: OperationArgument) -> Inequality:
+    return Inequality(GREATER_EQ, x, y)
+
+
+def ine_le(x: OperationArgument, y: OperationArgument) -> Inequality:
+    return Inequality(LESS_EQ, x, y)
+
+
+def ine_ae(x: OperationArgument, y: OperationArgument) -> Inequality:
+    return Inequality(ALMOST_EQ, x, y)

@@ -41,8 +41,6 @@ class Number:
 class Variable:
     # Name of the variable (e.g. 'x', 'y', 'a', ...)
     name: str
-    # Value of the variable
-    value: Union[int, float] = None
     def __init__(self, ...) -> None: ...;
     def __repr__(self) -> str: ...;
     # Call this function to get the formatted string
@@ -90,7 +88,7 @@ def ine(...)     -> Inequality;
 def n(...)       -> Number;
 def v(...)       -> Variable;
 def op(...)      -> Operation;
-# Operation shortcuts
+# <Operation> shortcuts
 def add(...)     -> Operation;
 def sub(...)     -> Operation;
 def mul(...)     -> Operation;
@@ -98,6 +96,13 @@ def div(...)     -> Operation;
 def pow(...)     -> Operation;
 def squared(...) -> Operation;
 def sqrt(...)    -> Operation;
+# <Inequality> shortcuts
+def ine_ne(...)  -> Inequality;
+def ine_gt(...)  -> Inequality;
+def ine_lt(...)  -> Inequality;
+def ine_ge(...)  -> Inequality;
+def ine_le(...)  -> Inequality;
+def ine_ae(...)  -> Inequality;
 ```
 > Tip: Import the module `examples.py` and see some examples.
 
