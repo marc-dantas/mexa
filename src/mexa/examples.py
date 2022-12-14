@@ -1,7 +1,7 @@
 from mexa.util import *
 
 print("MExA Examples:")
-print("Mass–energy equivalence")
+print("Mass-energy equivalence")
 print(eq(v('E'), mul(v('m'), squared(v('c')))))
 
 print("Pythagorean Theorem")

@@ -2,23 +2,31 @@
 Math EXpression Abstraction
 
 > WARNING! MExA is in development, it may have bugs and malfunctions 
-> Python version: 3.8+
+> Python version: 3.9+
 
 ## What is MExA?
 MExA is a Python package made
 to create abstractions for algebraic
 expressions, with a dynamic interaction
-between its members and even simple
-evaluation.
+between its members.
 
 ## Getting Started
+### Installation
+```console
+$ # Linux/Mac (Unix)
+$ pip3 install "git+https://github.com/marc-dantas/mexa.git#egg=mexa"
+
+$ # Windows
+$ pip install "git+https://github.com/marc-dantas/mexa.git#egg=mexa"
+```
+
 ### Usage
 #### Module `expr.py`
 ```py
 # <Operation> operator constants
 SUM = '+'
 SUBTRACT = '-'
-MULTIPLY = '×'
+MULTIPLY = '∙'
 DIVIDE = '÷'
 POWER = '^'
 ROOT = '√'
